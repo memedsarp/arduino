@@ -27,6 +27,7 @@ void Switch(int ledNums)
   {
     while (!digitalRead(buttonPin))
     {
+      Serial.println("Hello");
       digitalWrite(led1, LOW);
       digitalWrite(led2, LOW);
     }
