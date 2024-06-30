@@ -1,14 +1,13 @@
 const int ledPin = 3;
 const int buttonPin = 2;
-int buttonState = 1;
+int lightSwitch = 1;
+
+void SwitchToogle();
 
 void setup() {
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT_PULLUP);
-
 }
-
-void SwitchToogle();
 
 void loop() {
 
@@ -21,17 +20,20 @@ void loop() {
 
 void SwitchToggle()
 {
-  if(buttonState == 1)
+  if(lightSwitch == 1)
   {
-    buttonState = 0;
+    lightSwitch = 0;
     digitalWrite(ledPin, HIGH);
-    
+    while(!digitalRead(buttonPin)){
+    }
+
   } else
   {
-    buttonState = 1;
+    lightSwitch = 1;
     digitalWrite(ledPin, LOW);
+    while(!digitalRead(buttonPin)){
+    }
   }
-  delay(100);
 }
 
 
