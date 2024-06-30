@@ -1,8 +1,8 @@
 const int ledPin = 3;
 const int buttonPin = 2;
-int lightSwitch = 1;
+int lightSwitch = 0;
 
-void SwitchToogle();
+void SwitchToogle(int lightSwitch);
 
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -12,26 +12,25 @@ void setup() {
 void loop() {
 
   if (!digitalRead(buttonPin))
-  {
-    SwitchToggle();
+  { 
+    lightSwitch = (lightSwitch + 1) % 2;
+    SwitchToggle(lightSwitch);
   }
  
 }
 
-void SwitchToggle()
+void SwitchToggle(int lightSwitch)
 {
-  if(lightSwitch == 1)
+  if(lightSwitch)
   {
-    lightSwitch = 0;
-    digitalWrite(ledPin, HIGH);
     while(!digitalRead(buttonPin)){
+      digitalWrite(ledPin, HIGH);
     }
 
   } else
   {
-    lightSwitch = 1;
-    digitalWrite(ledPin, LOW);
     while(!digitalRead(buttonPin)){
+      digitalWrite(ledPin, LOW);
     }
   }
 }

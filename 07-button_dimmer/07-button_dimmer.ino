@@ -1,7 +1,6 @@
 const int ledPin = 3;
 const int buttonPin = 2;
 
-int status[] = {0, 1};
 int currentStatus = 0;
 
 int dimStatus = 0;
@@ -17,7 +16,7 @@ void Dimmer(int currentStatus);
 
 void loop() {
   if (!digitalRead(buttonPin)) {
-    currentStatus = status[(currentStatus + 1) % 2];
+    currentStatus = (currentStatus + 1) % 2;
     Dimmer(currentStatus);
   }
 }
